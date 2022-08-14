@@ -107,7 +107,7 @@ namespace API_SBX.Controllers
         [HttpGet("consultaEstadoProducto/Buscar/{Buscar}/TipoBusqueda/{TipoBusqueda}/DatoBusqueda/{DatoBusqueda}")]
         public async Task<ActionResult<IEnumerable<spConsultaEstadoProducto>>> mtd_buscar(string Buscar, string TipoBusqueda, string DatoBusqueda)
         {
-            var exists = await _context.ConsultaEstadoProducto.FromSqlRaw($"SP_CONSULTA_ESTADO_PRODUCTOS @Buscar = {Buscar}, @TipoBusqueda = {TipoBusqueda}, @DatoBusqueda = {DatoBusqueda}").ToListAsync();
+            var exists = await _context.ConsultaEstadoProducto.FromSqlRaw($"SP_CONSULTA_ESTADO_PRODUCTOS @Buscar = '{Buscar}', @TipoBusqueda = {TipoBusqueda}, @DatoBusqueda = {DatoBusqueda}").ToListAsync();
 
             return exists;
         }
